@@ -1,0 +1,44 @@
+{
+  "name": "template",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "lint:eslint": "eslint --cache --max-warnings 0 \"src/**/*.{vue,js,ts,tsx}\" --fix",
+    "lint:prettier": "eslint . --fix",
+    "lint": "pnpm lint:eslint && pnpm lint:prettier",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@logue/vue2-helpers": "2.1.3",
+    "axios": "^1.3.3",
+    "keep-alive-vue2": "^1.2.1",
+    "pinia": "^2.0.30",
+    "vue": "^2.7.14",
+    "vue-i18n": "^8.28.2",
+    "vue-router": "^3.6.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@commitlint/cli": "^17.4.3",
+    "@commitlint/config-conventional": "^17.4.3",
+    "@types/node": "^18.13.0",
+    "@vitejs/plugin-vue2": "^2.2.0",
+    "@vitejs/plugin-vue2-jsx": "^1.1.0",
+    "eslint-config-vite-app-vue": "^1.0.1",
+    "husky": "^8.0.3",
+    "jsdom": "^21.1.0",
+    "lint-staged": "^13.1.2",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "vite-plugin-mock-dev-server": "^0.3.21",
+    "vue-tsc": "^1.0.24"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,ts}": [
+      "eslint src"
+    ]
+  }
+}
