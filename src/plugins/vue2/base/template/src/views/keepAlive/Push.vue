@@ -4,7 +4,6 @@ import { useRoute, useRouter } from 'vue-router/composables';
 
 const route = useRoute();
 const router = useRouter();
-
 const num = ref('');
 </script>
 

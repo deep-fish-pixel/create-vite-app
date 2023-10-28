@@ -7,7 +7,7 @@ npm install vite-app-pro -g
 
 ### Usage
 ```
-vite-app-pro create helloWorld 
+vite-app create helloWorld 
 ```
 
 ```
@@ -18,7 +18,7 @@ cd helloWorld && npm run start
  * vite + vue3/vue2 + typescript + jsx
  * pinia state manager
  * precssor: scss/less/stylus
- * vite-app-pro eslint
+ * vite-app eslint
  * husky commit rule
  * i18n
  * automated testing：unit e2e

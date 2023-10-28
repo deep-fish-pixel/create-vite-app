@@ -1,17 +1,17 @@
 {
   "name": "vite-app-pro",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "create vite app",
   "type": "module",
   "main": "lib/index.js",
   "bin": {
-    "vite-app-pro": "bin/vite-app-pro.js"
+    "vite-app": "bin/vite-app.js"
   },
   "scripts": {
     "build": "rollup -c",
     "pub": "cd dist && npm publish && cd ..",
     "build:publish": "npm run build && npm run pub",
-    "answer": "node bin/vite-app-pro-esm.js create helloWorld --answers framework=vue3 terminal=web",
+    "answer": "node bin/vite-app-esm.js create helloWorld --answers framework=vue3 terminal=web",
     "lint:eslint": "eslint --cache --max-warnings 0 \"src/**/*.{vue,js,ts,tsx}\" --fix",
     "lint:prettier": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1"

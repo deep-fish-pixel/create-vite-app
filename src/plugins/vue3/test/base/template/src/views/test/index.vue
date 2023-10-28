@@ -2,7 +2,7 @@
 
 <template>
   <ul>
-    <!---#if(unit)--->
+<!---#if(unit)--->
     <li>
       <h3>unit test</h3>
       <p>npm run test:unit</p>
@@ -16,7 +16,8 @@
         >
       </div>
     </li>
-    <!---#if---><!---#if(e2e)--->
+<!---#if--->
+<!---#if(e2e)--->
     <li>
       <h3>e2e test</h3>
       <p>npm run test:e2e</p>
@@ -29,7 +30,7 @@
         >
       </div>
     </li>
-    <!---#if--->
+<!---#if--->
   </ul>
 </template>
 

@@ -23,15 +23,15 @@ export default function (target, data, params) {
         }
       )
       .replace(
-        RegExp(`\\n?(\/\/<|<!)---\=(${key})(\\|\\|([^>]*))?--->`, 'g'),
+        RegExp(`(\/\/<|<!)---\=(${key})(\\|\\|([^>]*))?--->`, 'g'),
         renderData[key] || ''
       )
       .replace(
         RegExp(
-          `\\n?(\/\/<|<!)---#if\\(${key}\\)--->([^#]*)(\/\/<|<!)---#if--->\\n?`,
+          `(\\n?)(\/\/<|<!)---#if\\(${key}\\)--->([^#]*)(\/\/<|<!)---#if--->\\n?`,
           'g'
         ),
-        (all, headerChars, content) => (renderData[key] ? content : '')
+        (all, wrap, headerChars, content) => (renderData[key] ? content :  (wrap || ''))
       );
   });
 

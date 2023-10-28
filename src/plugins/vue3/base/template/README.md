@@ -1,5 +1,5 @@
 # Vite App <!---#if(h5)--->H5<!---#if---><!---#if(web)--->Web<!---#if--->
-App is created by [vite-app-pro](https://www.npmjs.com/package/create-vite-app)
+App is created by [vite-app-pro](https://www.npmjs.com/package/vite-app-pro)
 
 ### Cmd
 

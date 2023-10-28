@@ -7,7 +7,7 @@ import useUserStore from '@/store/userStore';
 const userStore = useUserStore();
 
 function login() {
-  //<---#if(h5)--->
+//<---#if(h5)--->
   Toast('登录中');
   userStore
     .login()
@@ -17,15 +17,14 @@ function login() {
     .catch(() => {
       Toast('登录失败');
     });
-  //<---#if--->
-
-  // <---#if(web)--->
+//<---#if--->
+// <---#if(web)--->
   userStore.login();
-  //<---#if--->
+//<---#if--->
 }
 
 function getUserInfo() {
-  //<---#if(h5)--->
+//<---#if(h5)--->
   userStore
     .getUserInfo()
     .then(() => {
@@ -34,11 +33,11 @@ function getUserInfo() {
     .catch(() => {
       Toast('获取用户信息失败');
     });
-  //<---#if--->
+//<---#if--->
 
-  //<---#if(web)--->
+//<---#if(web)--->
   userStore.getUserInfo();
-  //<---#if--->
+//<---#if--->
 }
 </script>
 
