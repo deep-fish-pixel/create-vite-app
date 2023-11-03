@@ -10,11 +10,31 @@ export default function createProgressGuard(router: Router) {
     if (to.meta?.loaded) {
       return true;
     }
+//<---#if(csr)--->
     MultiNProgress.start();
+//<---#if--->
+//<---#if(ssg)--->
+    MultiNProgress.start();
+//<---#if--->
+//<---#if(ssr)--->
+    if (!import.meta.env.SSR) {
+      MultiNProgress.start();
+    }
+//<---#if--->
     next();
   });
 
   router.afterEach(async () => {
+//<---#if(csr)--->
     MultiNProgress.done();
+//<---#if--->
+//<---#if(ssg)--->
+    MultiNProgress.done();
+//<---#if--->
+//<---#if(ssr)--->
+    if (!import.meta.env.SSR) {
+      MultiNProgress.done();
+    }
+//<---#if--->
   });
 }

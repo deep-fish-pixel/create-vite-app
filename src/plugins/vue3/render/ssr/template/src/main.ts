@@ -1,3 +1,4 @@
+import { createSSRApp } from 'vue';
 import { setupStore } from '@/store';
 import { setupRouter, router } from '@/router';
 import { setupDirectives } from '@/directives';
@@ -9,10 +10,8 @@ import App from './App.vue';
 export function createApp() {
   const app = createSSRApp(App);
 
-  const store = createPinia();
-
   // 配置store
-  setupStore(app);
+  const store = setupStore(app);
 
   // 配置路由
   setupRouter(app);

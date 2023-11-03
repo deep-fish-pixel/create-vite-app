@@ -9,7 +9,7 @@ import handlers, { framework as frameworkHandler } from './qa/handlers.js';
 
 function composeApp(appName, framework, answers, options = {}) {
   const _options = { install: true, ...options };
-  const plugins = [/*'precss', 'i18n', 'terminal', */'render'/*, 'test'*/];
+  const plugins = ['precss', 'i18n', 'terminal', 'render', 'test'];
   const appParams = {
     appName,
     ...frameworkHandler(composer, framework).params,
