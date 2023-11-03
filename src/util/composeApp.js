@@ -9,7 +9,7 @@ import handlers, { framework as frameworkHandler } from './qa/handlers.js';
 
 function composeApp(appName, framework, answers, options = {}) {
   const _options = { install: true, ...options };
-  const plugins = ['precss', 'i18n', 'terminal', 'test'];
+  const plugins = [/*'precss', 'i18n', 'terminal', */'render'/*, 'test'*/];
   const appParams = {
     appName,
     ...frameworkHandler(composer, framework).params,
@@ -25,15 +25,16 @@ function composeApp(appName, framework, answers, options = {}) {
     let params = {};
 
     Promise.all(
-      plugins.map((name) =>
-        searchTemplates(
-          framework,
-          name,
-          handlers[framework][name](composer, answers[name])
-        )
+      plugins.map((name) => {
+          console.log('=========', name);
+          return searchTemplates(
+            framework,
+            name,
+            handlers[framework][name](composer, answers[name])
+          )
+        }
       )
-    )
-      .then((templateResults) => {
+    ).then((templateResults) => {
         // 解析所有参数
         params = templateResults.reduce(
           (params, templateResult) => ({ ...params, ...templateResult.params }),

@@ -5,7 +5,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import routes from '@/router/routes';
 import setupRouterGuard from '@/router/guard';
 
-const router: Router = createRouter({
+export const router: Router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE),
   routes: [...routes],
 });
@@ -15,4 +15,4 @@ export function setupRouter(app: App<Element>) {
   app.use(router).use(keepAliveVue3);
 }
 
-export { router };
+

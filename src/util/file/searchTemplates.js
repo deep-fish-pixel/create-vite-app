@@ -8,6 +8,10 @@ const __dirname = dirname(__filename);
 export default function searchTemplates(framework, name, result) {
   return new Promise((resolve) => {
     const { filePaths, params } = result;
+    if (name === 'render') {
+      console.log('=============searchTemplates======', name)
+      debugger
+    }
 
     Promise.all(
       (filePaths || []).map((pathName) =>
@@ -23,6 +27,7 @@ export default function searchTemplates(framework, name, result) {
         ).then((files) => files.filter((file) => !!file.match(/\/template\//)))
       )
     ).then((files) => {
+      console.log('===========files=====', JSON.stringify(files))
       resolve({
         files: files.flat(),
         params,
