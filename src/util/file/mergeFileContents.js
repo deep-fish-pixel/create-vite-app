@@ -2,23 +2,39 @@ import { assignConcat } from 'assign-deep-all';
 import renderTemplate from './renderTemplate.js';
 
 export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
+  // merge基础文件
+  dataFileMaps.forEach((dataFileMap) => {
+    dataFileMap.forEach((fileObjs, dataFileMapKey) => {
+      fileObjs.forEach((fileObj) => {
+        const baseFiles = baseFileMap.get(fileObj.filename);
+
+        if (!baseFiles && !fileObj.isTemplate) {
+          const baseFile = { content: fileObj.isJson ? {} : '' };
+          if (fileObj.filename.indexOf('main.ts') >= 0) {
+            debugger;
+          }
+          renderFile(baseFile, fileObj, params);
+          baseFileMap.set(fileObj.filename, [
+            { ...fileObj, content: baseFile.content },
+          ]);
+          dataFileMap.delete(dataFileMapKey);
+        }
+      });
+    });
+  });
+
+  // 替换全局参数
   dataFileMaps.forEach((dataFileMap) => {
     dataFileMap.forEach((fileObjs) => {
       fileObjs.forEach((fileObj) => {
         const baseFiles = baseFileMap.get(fileObj.filename);
 
-        if (!baseFiles) {
-          const baseFile = { content: fileObj.isJson ? {} : '' };
-
-          renderFile(baseFile, fileObj, params);
-          baseFileMap.set(fileObj.filename, [
-            { ...fileObj, content: baseFile.content },
-          ]);
-        } else {
-          baseFiles.forEach((baseFile) => {
-            renderFile(baseFile, fileObj, params);
-          });
+        if (fileObj.filename.indexOf('main.ts') >= 0) {
+          debugger;
         }
+        baseFiles && baseFiles.forEach((baseFile) => {
+          renderFile(baseFile, fileObj, params);
+        });
       });
     });
   });
@@ -26,6 +42,10 @@ export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
 }
 
 function renderFile(baseFile, fileObj, params) {
+  if (fileObj.filename.indexOf('main') > 0) {
+    console.log('fileObj.filename======', fileObj.filename);
+    debugger;
+  }
   if (fileObj.isJson) {
     assignConcat(baseFile.content, fileObj.content);
   } else if (fileObj.isTemplate) {

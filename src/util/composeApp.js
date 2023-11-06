@@ -55,6 +55,7 @@ function composeApp(appName, framework, answers, options = {}) {
         }
         createGitignoreFile(baseContentMap);
         // merge文件内容
+        debugger
         return mergeFileContents(baseContentMap, dataContentMaps, {
           ...params,
         });

@@ -1,5 +1,4 @@
 export default function (composer, terminal) {
-  debugger
   return {
     filePaths: [terminal],
     params: {

@@ -1,16 +1,16 @@
 module.exports = {
   import: `
-import { viteVConsole, } from 'vite-plugin-vconsole';  
+import { viteVConsole } from 'vite-plugin-vconsole';  
 `,
   injectViteVConsole: `
       viteVConsole({
         entry: [resolve('src/main.ts')], // entry file
         localEnabled: env.mode === 'development', // dev environment
         enabled: env.mode !== 'production', // build production
-        config: { // vconsole options
+        config: { 
           maxLogNumber: 1000,
-          theme: 'dark'
-        }
+          theme: 'dark',
+        },
       }),
 `,
 };

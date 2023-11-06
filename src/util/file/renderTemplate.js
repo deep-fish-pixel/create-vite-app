@@ -4,7 +4,7 @@ export default function (target, data, params) {
   Object.keys(renderData).forEach((key) => {
     target = target
       .replace(
-        RegExp(`(\\n?)( *)(\/\/<|<!)(---\\+${key}--->)(\\n?)`, 'g'),
+        RegExp(`(\\n?)( *)(//<|<!)(---\\+${key}--->)(\\n?)`, 'g'),
         (
           all,
           lineChars,
@@ -14,24 +14,35 @@ export default function (target, data, params) {
           tailLineSpaceChars
         ) => {
           const value = data[key] || '';
+          if (key === 'setup' && target.indexOf('setup') > 0) {
+            debugger;
+          }
+          const spaceValue = value.replace(
+            /(\n)([^\s]+)/g,
+            function (all, line, content) {
+              // 格式化空白
+              return `${line}${spaceChars}${content}`;
+            }
+          );
 
           return `${
-            value.match(/^\n/) ? '' : (lineChars || '') + spaceChars
-          }${value}${value.match(/\n$/) ? '' : tailLineSpaceChars}${
+            spaceValue.match(/^\n/) ? '' : (lineChars || '') + spaceChars
+          }${spaceValue}${spaceValue.match(/\n$/) ? '' : tailLineSpaceChars}${
             spaceChars + contentHeader + content + (tailLineSpaceChars || '')
           }`;
         }
       )
       .replace(
-        RegExp(`(\/\/<|<!)---\=(${key})(\\|\\|([^>]*))?--->`, 'g'),
+        RegExp(`(//<|<!)---=(${key})(\\|\\|([^>]*))?--->`, 'g'),
         renderData[key] || ''
       )
       .replace(
         RegExp(
-          `(\\n?)(\/\/<|<!)---#if\\(${key}\\)--->([^#]*)(\/\/<|<!)---#if--->\\n?`,
+          `(\\n?)(//<|<!)---#if\\(${key}\\)--->([^#]*)(//<|<!)---#if--->\\n?`,
           'g'
         ),
-        (all, wrap, headerChars, content) => (renderData[key] ? content :  (wrap || ''))
+        (all, wrap, headerChars, content) =>
+          renderData[key] ? content : wrap || ''
       );
   });
 

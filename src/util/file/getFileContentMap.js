@@ -9,7 +9,9 @@ function getFileContents(filePathes, params) {
       }
       return fse
         .readFile(filePath, { encoding: 'utf-8' })
-        .then((content) => renderTemplate(content, params));
+        .then((content) => {
+          return renderTemplate(content, params)
+        });
     })
   );
 }
