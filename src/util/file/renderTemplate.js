@@ -14,9 +14,6 @@ export default function (target, data, params) {
           tailLineSpaceChars
         ) => {
           const value = data[key] || '';
-          if (key === 'setup' && target.indexOf('setup') > 0) {
-            debugger;
-          }
           const spaceValue = value.replace(
             /(\n)([^\s]+)/g,
             function (all, line, content) {

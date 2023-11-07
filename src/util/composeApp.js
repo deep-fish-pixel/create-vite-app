@@ -26,15 +26,15 @@ function composeApp(appName, framework, answers, options = {}) {
 
     Promise.all(
       plugins.map((name) => {
-          console.log('=========', name);
-          return searchTemplates(
-            framework,
-            name,
-            handlers[framework][name](composer, answers[name])
-          )
-        }
-      )
-    ).then((templateResults) => {
+        console.log('=========', name);
+        return searchTemplates(
+          framework,
+          name,
+          handlers[framework][name](composer, answers[name])
+        );
+      })
+    )
+      .then((templateResults) => {
         // 解析所有参数
         params = templateResults.reduce(
           (params, templateResult) => ({ ...params, ...templateResult.params }),
@@ -54,8 +54,8 @@ function composeApp(appName, framework, answers, options = {}) {
           baseContentMap.get('./package.json')[0].content.name = appName;
         }
         createGitignoreFile(baseContentMap);
+
         // merge文件内容
-        debugger
         return mergeFileContents(baseContentMap, dataContentMaps, {
           ...params,
         });

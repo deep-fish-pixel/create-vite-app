@@ -10,9 +10,7 @@ export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
 
         if (!baseFiles && !fileObj.isTemplate) {
           const baseFile = { content: fileObj.isJson ? {} : '' };
-          if (fileObj.filename.indexOf('main.ts') >= 0) {
-            debugger;
-          }
+
           renderFile(baseFile, fileObj, params);
           baseFileMap.set(fileObj.filename, [
             { ...fileObj, content: baseFile.content },
@@ -29,12 +27,10 @@ export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
       fileObjs.forEach((fileObj) => {
         const baseFiles = baseFileMap.get(fileObj.filename);
 
-        if (fileObj.filename.indexOf('main.ts') >= 0) {
-          debugger;
-        }
-        baseFiles && baseFiles.forEach((baseFile) => {
-          renderFile(baseFile, fileObj, params);
-        });
+        baseFiles &&
+          baseFiles.forEach((baseFile) => {
+            renderFile(baseFile, fileObj, params);
+          });
       });
     });
   });
@@ -42,10 +38,6 @@ export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
 }
 
 function renderFile(baseFile, fileObj, params) {
-  if (fileObj.filename.indexOf('main') > 0) {
-    console.log('fileObj.filename======', fileObj.filename);
-    debugger;
-  }
   if (fileObj.isJson) {
     assignConcat(baseFile.content, fileObj.content);
   } else if (fileObj.isTemplate) {

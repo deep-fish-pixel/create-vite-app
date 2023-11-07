@@ -23,5 +23,6 @@
   "cache": "cache",
   "input": "input",
   "go back": "go back",
-  "code": "code"
+  "code": "code",
+  "noAuthority": "noAuthority"
 }
