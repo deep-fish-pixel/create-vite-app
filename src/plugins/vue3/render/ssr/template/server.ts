@@ -11,7 +11,6 @@ import serveStatic from 'serve-static';
 import compression from 'compression';
 
 axios.defaults.adapter = adapter;
-const isTest = process.env.NODE_ENV === 'test' || !!process.env.VITE_TEST_BUILD;
 const isProduction = process.env.NODE_ENV === 'production';
 export async function createServer(
   root = process.cwd(),
@@ -36,7 +35,7 @@ export async function createServer(
       await import('vite')
     ).createServer({
       root,
-      logLevel: isTest ? 'error' : 'info',
+      logLevel: 'error',
       server: {
         middlewareMode: true,
         watch: {
@@ -127,10 +126,8 @@ export async function createServer(
   return { app };
 }
 
-if (!isTest) {
-  createServer().then(({ app }) =>
-    app.listen(5173, () => {
-      console.log('http://localhost:5173');
-    })
-  );
-}
+createServer().then(({ app }) =>
+  app.listen(5173, () => {
+    console.log('http://localhost:5173');
+  })
+);
