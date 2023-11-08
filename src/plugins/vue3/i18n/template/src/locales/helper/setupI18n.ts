@@ -31,7 +31,7 @@ export function getI18n(options = { locale: '' }) {
 export function setupI18n(app: App<Element>) {
   const i18n = getI18n();
 
-  app.use(i18n);
+  app.use(i18n as any);
 }
 
 export function setI18nLanguage(i18n: I18n<any>, locale: string) {
