@@ -11,7 +11,7 @@ export default [
       copy({
         targets: [
           {
-            src: 'bin/vite-app.js',
+            src: 'bin/vite-app-pro.js',
             dest: 'dist/bin/',
             transform: (contents) =>
               contents

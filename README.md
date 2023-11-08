@@ -8,7 +8,7 @@ npm install vite-app-pro -g
 
 ### Usage
 ```
-vite-app create helloWorld 
+vite-app-pro create helloWorld 
 ```
 
 ```

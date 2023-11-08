@@ -23,7 +23,6 @@ export default function searchTemplates(framework, name, result) {
         ).then((files) => files.filter((file) => !!file.match(/\/template\//)))
       )
     ).then((files) => {
-      console.log('===========files=====', JSON.stringify(files));
       resolve({
         files: files.flat(),
         params,

@@ -26,7 +26,6 @@ function composeApp(appName, framework, answers, options = {}) {
 
     Promise.all(
       plugins.map((name) => {
-        console.log('=========', name);
         return searchTemplates(
           framework,
           name,

@@ -8,7 +8,7 @@ const promptFramework = require('../src/index');
 const program = new Command();
 
 program
-  .name('vite-vue')
+  .name('vite-vue-pro')
   .description('CLI to create vue web/h5 template app')
   .version(packageJson.version);
 

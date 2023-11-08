@@ -30,18 +30,9 @@ export default defineConfig((env) => {
       vueJsx(),
       VitePages({
         extensions: ['vue', 'tsx', 'md'],
-        // extensions: ['vue', 'md'],
-        // dirs: ['src/views'],
-        // exclude: ['**/components/*.vue'],
       }),
       mockDevServerPlugin({
         prefix: '/',
-      }),
-      AutoImport({
-        imports: ['vue', 'vue-router', '@vueuse/head', '@vueuse/core'],
-        dts: 'src/auto-imports.d.ts',
-        dirs: ['src/composables', 'src/stores'],
-        vueTemplate: true,
       }),
       Components({
         extensions: ['vue', 'tsx', 'md'],

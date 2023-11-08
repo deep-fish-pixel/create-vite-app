@@ -38,6 +38,10 @@ export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
 }
 
 function renderFile(baseFile, fileObj, params) {
+  if(fileObj.filename.indexOf('main.ts') >= 0){
+    debugger
+  }
+
   if (fileObj.isJson) {
     assignConcat(baseFile.content, fileObj.content);
   } else if (fileObj.isTemplate) {

@@ -14,7 +14,7 @@ const program = new Command();
 const packageJson = fse.readJson(path.join(__dirname, '../package.json'));
 
 program
-  .name('vite-vue')
+  .name('vite-vue-pro')
   .description('CLI to create vue3/vue2 web/h5 template project')
   .version(packageJson.version);
 
