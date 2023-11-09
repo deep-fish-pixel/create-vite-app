@@ -1,5 +1,5 @@
 # create vue3/vue2 app template cli
-创建vue模板项目，适用于h5和pc，项目支持typescript、jsx、pinia、i18n、eslint、ssg、ssr、test等
+创建vue模板项目，适用于h5和pc，项目支持typescript、ssg、ssr、pwa、pinia、i18n、eslint、test等
 
 ### Install
 ```
@@ -17,6 +17,8 @@ cd helloWorld && npm run start
 
 ### Modules
  * vite + vue3/vue2 + typescript + jsx
+ * support csr ssg ssr mode
+ * support pwa
  * pinia state manager
  * precssor: scss/less/stylus
  * vite-app eslint
@@ -25,7 +27,6 @@ cd helloWorld && npm run start
  * automated testing：unit e2e
  * typescript mock
  * extends keep-alive
- * vue3 support csr ssg ssr mode
  * web terminal
     * ajax progress bar
     * ui component lib:

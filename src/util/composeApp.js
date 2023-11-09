@@ -26,11 +26,16 @@ function composeApp(appName, framework, answers, options = {}) {
 
     Promise.all(
       plugins.map((name) => {
-        return searchTemplates(
+        const handle = handlers[framework][name];
+
+        return handle ? searchTemplates(
           framework,
           name,
-          handlers[framework][name](composer, answers[name])
-        );
+          handle(composer, answers[name])
+        ) : {
+          files: [],
+          params: {},
+        };
       })
     ).then((templateResults) => {
         // 解析所有参数
