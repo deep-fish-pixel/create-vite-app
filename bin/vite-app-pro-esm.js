@@ -43,7 +43,7 @@ program
 
       if (!answerMap.framework) {
         console.error(
-          chalk.red('Missing framework name. (framework=[vue3|vue2|react])')
+          chalk.red('Missing framework name. (framework=[vue3|vue2])')
         );
         return;
       }
@@ -51,6 +51,7 @@ program
         console.error(chalk.red('Missing terminal name. (terminal=[web|h5])'));
         return;
       }
+      debugger
       return composeApp(
         str,
         answerMap.framework,

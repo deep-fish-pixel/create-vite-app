@@ -7,7 +7,6 @@ import mockDevServerPlugin from 'vite-plugin-mock-dev-server';
 import 'vite-ssg';
 import generateSitemap from 'vite-ssg-sitemap';
 import Components from 'unplugin-vue-components/vite';
-import AutoImport from 'unplugin-auto-import/vite';
 
 export default defineConfig((env) => {
   // 获取配置

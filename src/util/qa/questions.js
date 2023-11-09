@@ -6,10 +6,10 @@ export const framework = {
   name: 'framework',
   message: 'Select a framework',
   choices: [
-    { name: 'vue3', value: 'vue3', default: true },
+    { name: 'vue3', value: 'vue3' },
     { name: 'vue2', value: 'vue2' },
-    // { name: 'react', value: 'react', disabled: true, },
   ],
+  default: 'vue3'
 };
 
 export default {

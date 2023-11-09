@@ -8,6 +8,7 @@ export default function promptAppConfigs(appName, framework) {
     return;
   }
 
+  debugger
   inquirer.prompt(questions[framework]).then((answers) => {
     composeApp(appName, framework, answers);
   });
