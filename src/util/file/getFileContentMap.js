@@ -7,6 +7,9 @@ function getFileContents(filePathes, params) {
       if (filePath.match(/\.json$/)) {
         return fse.readJson(filePath);
       }
+      else if (filePath.match(/\.(png|jpg|jpeg|ico|svg)$/)) {
+        return fse.readFile(filePath);
+      }
       return fse
         .readFile(filePath, { encoding: 'utf-8' })
         .then((content) => {
@@ -25,10 +28,12 @@ export default function getFileContentMap(filePathes, params) {
         const filename = filePathes[index].replace(/\.tpl\.js$/, '');
         const relativeFilename = filename.replace(/.*\/template\//, './');
         const isTemplate = !!filePathes[index].match(/\.tpl\.js$/);
+        const isFile = !!filePathes[index].match(/\.(png|jpg|jpeg|ico|svg)$/);
 
         const value = {
           isJson: !!filePathes[index].match(/\.json$/),
           isTemplate,
+          isFile,
           content: isTemplate ? requireObject(fileContent) : fileContent,
           filename: relativeFilename,
         };

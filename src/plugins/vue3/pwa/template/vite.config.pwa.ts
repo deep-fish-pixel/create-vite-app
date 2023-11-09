@@ -14,25 +14,13 @@ export default () => (VitePWA({
                 handler: 'NetworkFirst',
                 method: 'GET',
                 options: {
-                    // networkTimeoutSeconds: 1,
+                    networkTimeoutSeconds: 10,
                     cacheName: 'api-cache',
                     cacheableResponse: {
                         statuses: [0, 200],
                     },
                 },
-            },
-            {
-                urlPattern: /^https:\/\/cdn\.jsdelivr\.net\/.*/i,
-                handler: 'CacheFirst',
-                method: 'GET',
-                options: {
-                    // networkTimeoutSeconds: 1,
-                    cacheName: 'cdn-cache',
-                    cacheableResponse: {
-                        statuses: [0, 200],
-                    },
-                },
-            },
+            }
         ],
     },
     manifest: {

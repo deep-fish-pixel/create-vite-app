@@ -58,32 +58,31 @@ export async function createServer(
     );
   }
 
-  app.use('/justTest/getFruitList', async (req, res) => {
-    const names = [
-      'Orange',
-      'Apricot',
-      'Apple',
-      'Plum',
-      'Pear',
-      'Pome',
-      'Banana',
-      'Cherry',
-      'Grapes',
-      'Peach',
-    ];
-    const list = names.map((name, id) => {
-      return {
-        id: ++id,
-        name,
-        price: Math.ceil(Math.random() * 100),
-      };
-    });
-    const data = {
-      data: list,
-      code: 0,
-      msg: '',
-    };
-    res.end(JSON.stringify(data));
+  app.use('/api/user/login', async (req, res) => {
+    res.end(JSON.stringify({
+      resultCode: 'WL-0000',
+      resultData: {
+        account: 'mark20222',
+      },
+      resultDesc: '',
+    }));
+  });
+  app.use('/api/user/:userId', async (req, res) => {
+    return res.end(JSON.stringify({
+      resultCode: 'WL-0000',
+      resultData: {
+        account: 'mark2022',
+        username: 'mark',
+        age: 20,
+        email: '123@11.com',
+        name: 'mark',
+        introduction: 'string',
+        phone: '13733333333',
+        address: 'string',
+        roles: [],
+      },
+      resultDesc: '',
+    }));
   });
 
   app.use('*', async (req, res) => {

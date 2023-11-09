@@ -1,18 +1,8 @@
 module.exports = {
   import: `
-import VitePages from 'vite-plugin-pages';
-import 'vite-ssg';
-import generateSitemap from 'vite-ssg-sitemap';
-import Components from 'unplugin-vue-components/vite';
+import PWA from './vite.config.pwa'
 `,
   injectViteVConsole: `
-      VitePages({
-        extensions: ['vue', 'tsx', 'md'],
-      }),
-      Components({
-        extensions: ['vue', 'tsx', 'md'],
-        include: [/\\.vue$/, /\\.vue\\?vue/, /\\.tsx$/, /\\.md$/],
-        dts: 'src/components.d.ts',
-      }),
+      ...PWA(),
 `,
 };
