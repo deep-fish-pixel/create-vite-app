@@ -5,7 +5,7 @@ export default () => (VitePWA({
     base: '/',
     registerType: 'autoUpdate',
     workbox: {
-        cacheId: 'mmf-blog-vite-vue3-ssr',
+        cacheId: 'vite-app-pro',
         globPatterns: ['**/*.{js,css}'],
         navigateFallback: null,
         runtimeCaching: [
@@ -42,37 +42,17 @@ export default () => (VitePWA({
         background_color: '#ffffff',
         icons: [
             {
-                src: '/static/img/icons/android-chrome-48x48.png',
-                sizes: '48x48',
-                type: 'image/png',
-            },
-            {
-                src: '/static/img/icons/android-chrome-72x72.png',
-                sizes: '72x72',
-                type: 'image/png',
-            },
-            {
-                src: '/static/img/icons/android-chrome-96x96.png',
-                sizes: '96x96',
-                type: 'image/png',
-            },
-            {
-                src: '/static/img/icons/msapplication-icon-144x144.png',
+                src: '/assets/icons/msapplication-icon-144x144.png',
                 sizes: '144x144',
                 type: 'image/png',
             },
             {
-                src: '/static/img/icons/android-chrome-168x168.png',
-                sizes: '168x168',
-                type: 'image/png',
-            },
-            {
-                src: '/static/img/icons/android-chrome-192x192.png',
+                src: '/assets/icons/android-chrome-192x192.png',
                 sizes: '192x192',
                 type: 'image/png',
             },
             {
-                src: '/static/img/icons/android-chrome-512x512.png',
+                src: '/assets/icons/android-chrome-512x512.png',
                 sizes: '512x512',
                 type: 'image/png',
             },
