@@ -18,7 +18,7 @@ function login() {
       Toast('登录失败');
     });
 //<---#if--->
-// <---#if(web)--->
+//<---#if(web)--->
   userStore.login();
 //<---#if--->
 }
