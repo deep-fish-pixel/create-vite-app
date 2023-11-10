@@ -42,23 +42,17 @@ function getUserInfo() {
 
 <template>
   <p class="login">
-    <button v-if="!userStore.getAccount" @click="login">
-      <!---=loginReplace||登录--->
-    </button>
+    <button v-if="!userStore.getAccount" @click="login"><!---=loginReplace||登录---></button>
     <span v-else class="success">account: {{ userStore.getAccount }} </span>
   </p>
   <p v-if="!userStore.getUser.username">
-    <button @click="getUserInfo">
-      <!---=getReplace||获取---><!---=userinfoReplace||用户信息--->
-    </button>
+    <button @click="getUserInfo"><!---=getReplace||获取---><!---=userinfoReplace||用户信息---></button>
   </p>
   <div v-else class="success">
     <div><!---=userinfoReplace||用户信息---></div>
     {{ userStore.getUser }}
   </div>
-  <button @click="userStore.reset()">
-    <!---=resetReplace||重置--->
-  </button>
+  <button @click="userStore.reset()"><!---=resetReplace||重置---></button>
   <p>
     <a
       target="_blank"
@@ -69,8 +63,8 @@ function getUserInfo() {
 </template>
 
 <style lang="<!---=precssor--->" scoped>
-.login{
-  .success{
+.login {
+  .success {
     color: darkgreen;
   }
 }
