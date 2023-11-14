@@ -1,7 +1,7 @@
 {
   "name": "vite-app-pro",
-  "version": "1.2.2",
-  "description": "create vite app",
+  "version": "1.2.4",
+  "description": "create vite vue3/vue2/h5/web TypeScript project in few seconds",
   "type": "module",
   "main": "lib/index.js",
   "bin": {
@@ -38,5 +38,18 @@
   "devDependencies": {
     "eslint-config-vite-app-vue": "^1.0.1",
     "rollup-plugin-copy": "^3.4.0"
-  }
+  },
+  "keywords": [
+    "vue3",
+    "vue2",
+    "create vue app",
+    "vite create app",
+    "vue router",
+    "i18n",
+    "pwa",
+    "ssr",
+    "ssg",
+    "javascript",
+    "typescript"
+  ]
 }

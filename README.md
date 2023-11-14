@@ -16,16 +16,20 @@ cd helloWorld && npm run start
 ```
 
 ### Modules
- * vite + vue3/vue2 + typescript + jsx
- * support csr ssg ssr mode
- * support pwa
- * pinia state manager
- * precssor: scss/less/stylus
- * vite-app eslint
- * husky commit rule
+
+ * vue3/vue2
+ * typescript
+ * vue-router
+ * pinia
+ * jsx
+ * csr/ssg/ssr mode
+ * pwa
+ * scss/less/stylus
+ * eslint
+ * husky
  * i18n
- * automated testing：unit e2e
- * typescript mock
+ * unit/e2e test
+ * mock data
  * extends keep-alive
  * web terminal
     * ajax progress bar
