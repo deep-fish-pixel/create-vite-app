@@ -63,10 +63,10 @@ function composeApp(appName, framework, answers, options = {}) {
           ...params,
         });
       })
-      .then((baseContentMap) =>
+      .then((baseContentMap) => {
         // 输出文件内容
-        outputFileContents(appName, baseContentMap)
-      )
+        return outputFileContents(appName, baseContentMap)
+      })
       .then(() =>
         // 安装操作
         installApp(appName, _options.install)
