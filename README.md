@@ -40,6 +40,15 @@ cd helloWorld && npm run start
    * vConsole
    * ui component lib: vant
 
+### 模板项目截图
 
+#### web项目
+![web-pinia](./assets/web-pinia.png)
+![web-request](./assets/web-request.png)
+![web-i18n](./assets/web-i18n.png)
 
+#### h5项目
+![h5-pinia](./assets/h5-pinia.png)
+![h5-request](./assets/h5-request.png)
+![h5-i18n](./assets/h5-i18n.png)
 
