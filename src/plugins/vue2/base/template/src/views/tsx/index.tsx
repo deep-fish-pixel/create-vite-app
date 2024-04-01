@@ -11,17 +11,17 @@ export default defineComponent({
       <p>
         <h2>{ store.count }</h2>
         <button
-          className={styles.button}
+          class={styles.button}
           onClick={store.increment}>
           <!---=addReplace||增加--->
         </button>
         <button
-          className={styles.button}
+          class={styles.button}
           onClick={store.decrement}>
           <!---=subReplace||减少--->
         </button>
         <button
-          className={styles.button}
+          class={styles.button}
           onClick={store.reset}>
           <!---=resetReplace||重置--->
         </button>
