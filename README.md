@@ -35,7 +35,7 @@ cd helloWorld && npm run start
     * ajax progress bar
     * ui component lib:
        * vue2: element-ui
-       * vue3: lego
+       * vue3: element-plus
  * H5 terminal
    * vConsole
    * ui component lib: vant
