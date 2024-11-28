@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "vite-plugin-simple-vconsole": "^0.1.11"
+  }
+}

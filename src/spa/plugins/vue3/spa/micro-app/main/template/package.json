@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@micro-zoe/micro-app": "^1.0.0-rc.13"
+  }
+}
