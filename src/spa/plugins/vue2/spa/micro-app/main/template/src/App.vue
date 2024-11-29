@@ -6,29 +6,13 @@ const route = useRoute();
 
 <template>
   <div class="routers">
-    <router-link :to="{ name: 'eslint' }" class="router">
-      eslint
-      <!---=styleReplace||规范--->
-    </router-link>
-    <router-link :to="{ name: 'store' }" class="router">
-      pinia
-      <!---=counterReplace||计数器--->
-    </router-link>
-    <router-link :to="{ name: 'tsx' }" class="router">
-      tsx
-      <!---=counterReplace||计数器--->
-    </router-link>
-    <router-link :to="{ name: 'ajax' }" class="router">
-      {{
-      <!---=requestReplace||'请求'---><!---#if(web)--->
-      + ' + ' +
-      <!---=progressReplace||'进度条'---><!---#if--->
-      + '+ Mock' }}
-    </router-link>
-    <router-link :to="{ name: 'keepAlive' }" class="router">
-      KeepAliveVue3
-    </router-link>
-    <!---+inject--->
+    <div class="routers">
+      <router-link :to="{ path: '/first' }" class="router" :class="{
+      'router-link-active': route.path.match(/\/first/)
+    }">
+        First Child App
+      </router-link>
+    </div>
   </div>
   <keep-alive-vue3 :cache="route.meta?.cache" />
 </template>

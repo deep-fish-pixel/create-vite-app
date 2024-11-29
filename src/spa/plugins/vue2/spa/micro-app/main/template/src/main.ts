@@ -1,8 +1,8 @@
 import microApp from '@micro-zoe/micro-app'
-import { createApp } from 'vue';
-import { setupStore } from '@/store';
-import { setupRouter } from '@/router';
-import { setupDirectives } from '@/directives';
+import Vue from 'vue';
+import { router, setupRouter } from '@/router';
+import setupDirectives from '@/directives';
+import pinia from '@/store';
 //<---+import--->
 import App from './App.vue';
 //<---+importCss--->
@@ -10,18 +10,18 @@ import App from './App.vue';
 // 启用微前端
 microApp.start();
 
-const app = createApp(App);
-
-// 配置store
-setupStore(app);
-
 // 配置路由
-setupRouter(app);
+setupRouter();
 
 // 配置指令
-setupDirectives(app);
+setupDirectives();
 
 //<---+setup--->
 
-app.mount('#app');
+new Vue({
+  router,
+  pinia,
+  //<---+inject--->
+  render: (h) => h(App),
+}).$mount('#app');
 
