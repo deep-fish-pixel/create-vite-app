@@ -7,13 +7,10 @@ import childAppNameQuestion from './questions/childAppName.js';
 export default function promptFramework() {
   inquirer.prompt(spaQuestion.question).then((spaAnswers) => {
     inquirer.prompt(mainAppNameQuestion.question).then((mainAppNameAnswers) => {
-      // promptAppConfigs(appName, answers.framework);
       inquirer.prompt(childAppsNumberQuestion.question).then((childAppsNumberAnswers) => {
-        console.log(spaAnswers, mainAppNameAnswers, childAppsNumberAnswers);
         const list = [];
-        const childAppNumber = new Number(childAppsNumberAnswers.childAppNumber);
 
-        for (let index = 0; index < childAppNumber; index++) {
+        for (let index = 0; index < childAppsNumberAnswers.childAppNumber; index++) {
           list.push(childAppNameQuestion);
         }
 
