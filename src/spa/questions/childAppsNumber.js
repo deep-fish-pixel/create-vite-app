@@ -1,19 +1,22 @@
 export default {
   question: {
-    type: 'list',
-    name: 'spa',
-    message: 'Set your child apps number?',
-    choices: [
-      { name: 'qiankun', value: 'qiankun', default: true },
-      { name: 'micro-app', value: 'micro-app' },
-    ],
+    type: 'number',
+    name: 'childAppNumber',
+    message: 'Set the number of your child apps',
+    default: 2,
+    validate: function(value) {
+      if (value < 1 || value > 10) {
+        return 'Number must be between 1 and 10';
+      }
+      return true;
+    }
   },
   handler(composer, value){
     return {
-      filePaths: [`../plugins/vue3/spa/${value}`],
       params: {
-        precssor: value,
+        value,
       },
     };
   }
 };
+

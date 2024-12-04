@@ -10,7 +10,7 @@ export default {
   },
   handler(composer, value){
     return {
-      filePaths: [`../plugins/vue3/spa/${value}`],
+      filePaths: [`../plugins/\${vue3}/spa/${value}`],
       params: {
         precssor: value,
       },

@@ -1,0 +1,55 @@
+import inquirer from 'inquirer';
+import spaQuestion from './questions/spa.js';
+import mainAppNameQuestion from './questions/mainAppName.js';
+import childAppsNumberQuestion from './questions/childAppsNumber.js';
+import childAppNameQuestion from './questions/childAppName.js';
+
+export default function promptFramework() {
+  inquirer.prompt(spaQuestion.question).then((spaAnswers) => {
+    inquirer.prompt(mainAppNameQuestion.question).then((mainAppNameAnswers) => {
+      // promptAppConfigs(appName, answers.framework);
+      inquirer.prompt(childAppsNumberQuestion.question).then((childAppsNumberAnswers) => {
+        console.log(spaAnswers, mainAppNameAnswers, childAppsNumberAnswers);
+        const list = [];
+        const childAppNumber = new Number(childAppsNumberAnswers.childAppNumber);
+
+        for (let index = 0; index < childAppNumber; index++) {
+          list.push(childAppNameQuestion);
+        }
+
+        loopQuestionsPromise(list, 0, []).then((childResults) => {
+          console.log(spaAnswers, mainAppNameAnswers, childAppsNumberAnswers, childResults);
+        });
+      });
+    });
+  });
+}
+
+function loopQuestionsPromise(list, index=0, answers = []) {
+  return new Promise((resolve, reject) => {
+    loopQuestions(list, index, answers, resolve);
+  })
+}
+
+function loopQuestions(list, index=0, answers = [], resolve = () => null) {
+  if (list[index]) {
+    debugger
+    return inquirer.prompt({
+      ...list[index].question,
+      message: indexToOrdinalNumbers(list[index].question.message, index),
+      default: indexToOrdinalNumbers(list[index].question.default, index)
+    }).then((spaAnswers) => {
+      answers.push(spaAnswers);
+      return loopQuestions(list, ++index, answers, resolve);
+    });
+  } else {
+    debugger
+    resolve(answers);
+    return Promise.resolve(answers);
+  }
+}
+
+function indexToOrdinalNumbers(content, index) {
+  const ordinalNumbers = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth',];
+  return content.replace(/\$\{index}/g, ordinalNumbers[index]);
+}

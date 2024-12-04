@@ -5,6 +5,7 @@ import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import chalk from 'chalk';
 import promptFramework from '../src/index.js';
+import spaPromptFramework from '../src/spa/index.js';
 import composeApp from '../src/util/composeApp.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -51,7 +52,7 @@ program
         console.error(chalk.red('Missing terminal name. (terminal=[web|h5])'));
         return;
       }
-      debugger
+
       return composeApp(
         str,
         answerMap.framework,
@@ -67,6 +68,13 @@ program
       );
     }
     promptFramework(str);
+  });
+
+program
+  .command('create-spa')
+  .description('Create Spa apps')
+  .action((str, options) => {
+    spaPromptFramework();
   });
 
 program.parse();
