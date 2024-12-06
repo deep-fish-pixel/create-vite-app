@@ -8,9 +8,10 @@ export default {
       { name: 'micro-app', value: 'micro-app' },
     ],
   },
-  handler(composer, value){
+  handler(composer, value, answers){
+    debugger
     return {
-      filePaths: [`../plugins/\${vue3}/spa/${value}`],
+      filePaths: [`../../../spa/plugins/${answers.framework}/spa/${value}`],
       params: {
         precssor: value,
       },

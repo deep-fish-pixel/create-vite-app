@@ -3,8 +3,9 @@ import spaQuestion from './questions/spa.js';
 import mainAppNameQuestion from './questions/mainAppName.js';
 import childAppsNumberQuestion from './questions/childAppsNumber.js';
 import childAppNameQuestion from './questions/childAppName.js';
+import promptFramework from '../index.js';
 
-export default function promptFramework() {
+export default function spaPromptFramework() {
   inquirer.prompt(spaQuestion.question).then((spaAnswers) => {
     inquirer.prompt(mainAppNameQuestion.question).then((mainAppNameAnswers) => {
       inquirer.prompt(childAppsNumberQuestion.question).then((childAppsNumberAnswers) => {
@@ -16,6 +17,9 @@ export default function promptFramework() {
 
         loopQuestionsPromise(list, 0, []).then((childResults) => {
           console.log(spaAnswers, mainAppNameAnswers, childAppsNumberAnswers, childResults);
+          promptFramework(mainAppNameAnswers.mainApp, true, {
+            spa: spaAnswers.spa,
+          });
         });
       });
     });
@@ -30,8 +34,7 @@ function loopQuestionsPromise(list, index=0, answers = []) {
 
 function loopQuestions(list, index=0, answers = [], resolve = () => null) {
   if (list[index]) {
-    debugger
-    return inquirer.prompt({
+    inquirer.prompt({
       ...list[index].question,
       message: indexToOrdinalNumbers(list[index].question.message, index),
       default: indexToOrdinalNumbers(list[index].question.default, index)
@@ -40,9 +43,7 @@ function loopQuestions(list, index=0, answers = [], resolve = () => null) {
       return loopQuestions(list, ++index, answers, resolve);
     });
   } else {
-    debugger
     resolve(answers);
-    return Promise.resolve(answers);
   }
 }
 

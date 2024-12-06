@@ -9,7 +9,7 @@ import handlers, { framework as frameworkHandler } from './qa/handlers.js';
 
 function composeApp(appName, framework, answers, options = {}) {
   const _options = { install: true, ...options };
-  const plugins = ['precss', 'i18n', 'terminal', 'pwa', 'render', 'test'];
+  const plugins = ['precss', 'i18n', 'terminal', 'pwa', 'render', 'spa', 'test'];
   const appParams = {
     appName,
     ...frameworkHandler(composer, framework).params,
@@ -24,20 +24,25 @@ function composeApp(appName, framework, answers, options = {}) {
     const baseParams = baseResult.params || {};
     let params = {};
 
+    debugger
+
     Promise.all(
       plugins.map((name) => {
         const handle = handlers[framework][name];
 
+        debugger
+
         return handle ? searchTemplates(
           framework,
           name,
-          handle(composer, answers[name])
+          handle(composer, answers[name], answers)
         ) : {
           files: [],
           params: {},
         };
       })
     ).then((templateResults) => {
+      debugger
         // 解析所有参数
         params = templateResults.reduce(
           (params, templateResult) => ({ ...params, ...templateResult.params }),
@@ -52,6 +57,7 @@ function composeApp(appName, framework, answers, options = {}) {
         );
       })
       .then(([baseContentMap, ...dataContentMaps]) => {
+        debugger
         // 设置项目名称
         if (baseContentMap.get('./package.json')) {
           baseContentMap.get('./package.json')[0].content.name = appName;
