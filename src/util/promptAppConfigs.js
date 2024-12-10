@@ -9,17 +9,25 @@ export default function promptAppConfigs(appName, framework, isSPA, spaAnswers) 
   }
 
   const frameworkQuestions = [...questions[framework]];
-  debugger
+
   if(framework === 'vue3'){
     frameworkQuestions.splice(3, 1);
   }
 
-  inquirer.prompt(frameworkQuestions).then((answers) => {
-    // 框架名称
-    answers.framework = framework;
-    // spa的回答
-    Object.assign(answers, spaAnswers);
-    debugger
-    composeApp(appName, framework, answers);
-  });
+  return new Promise((resolve, reject) => {
+    inquirer.prompt(frameworkQuestions).then(() => {
+      // 框架名称
+      answers.framework = framework;
+
+      resolve({
+        ...answers,
+      });
+
+      // spa的回答
+      Object.assign(answers, spaAnswers);
+
+      composeApp(appName, framework, answers);
+    });
+  })
+
 }

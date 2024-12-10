@@ -4,6 +4,7 @@ import mainAppNameQuestion from './questions/mainAppName.js';
 import childAppsNumberQuestion from './questions/childAppsNumber.js';
 import childAppNameQuestion from './questions/childAppName.js';
 import promptFramework from '../index.js';
+import composeApp from "../util/composeApp.js";
 
 export default function spaPromptFramework() {
   inquirer.prompt(spaQuestion.question).then((spaAnswers) => {
@@ -21,6 +22,10 @@ export default function spaPromptFramework() {
             spa: spaAnswers.spa,
             spaMain: true,
             childApps: childResults,
+          }).then((answers) => {
+            childResults.forEach((childResult) => {
+              composeApp(childResult.childApp, answers.framework, answers);
+            });
           });
         });
       });
