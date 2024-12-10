@@ -9,11 +9,9 @@ export default function searchTemplates(framework, name, result) {
   return new Promise((resolve) => {
     const { filePaths, params } = result;
 
-    debugger
     Promise.all(
       (filePaths || []).map((pathName) =>
         {
-          debugger
           const filepath = path.join(
             __dirname,
             __filename.match(/searchTemplates\.js/) ? '../../' : '',
@@ -28,7 +26,6 @@ export default function searchTemplates(framework, name, result) {
         }
       )
     ).then((files) => {
-      debugger
       resolve({
         files: files.flat(),
         params,

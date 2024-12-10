@@ -23,7 +23,16 @@ export default function spaPromptFramework() {
             spaMain: true,
             childApps: childResults,
           }).then((answers) => {
-            childResults.forEach((childResult) => {
+            childResults.forEach((childResult, index) => {
+              Object.assign(answers, {
+                spa: spaAnswers.spa,
+                spaMain: false,
+                childApps: [],
+                serverPort: 7143 + index + 1,
+              });
+
+              debugger
+
               composeApp(childResult.childApp, answers.framework, answers);
             });
           });

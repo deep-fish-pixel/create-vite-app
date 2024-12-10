@@ -29,12 +29,13 @@ export default function getFileContentMap(filePathes, params) {
         const relativeFilename = filename.replace(/.*\/template\//, './');
         const isTemplate = !!filePathes[index].match(/\.tpl\.js$/);
         const isFile = !!filePathes[index].match(/\.(png|jpg|jpeg|ico|svg)$/);
+        console.log(params)
 
         const value = {
           isJson: !!filePathes[index].match(/\.json$/),
           isTemplate,
           isFile,
-          content: isTemplate ? requireObject(fileContent) : fileContent,
+          content: isTemplate ? requireObject(fileContent, params) : fileContent,
           filename: relativeFilename,
         };
 
@@ -50,9 +51,16 @@ export default function getFileContentMap(filePathes, params) {
     .then(() => fileMap);
 }
 
-function requireObject(fileContent) {
+function requireObject(fileContent, params) {
+  const keyArgs = [];
+  const valueArgs = [];
+  Object.keys(params || {}).forEach(key => {
+    keyArgs.push(key);
+    valueArgs.push(params[key]);
+  })
+  debugger
   return new Function(
-    [],
+    ...keyArgs,
     fileContent.replace(/(module\.exports\s*=|export default)\s*/, 'return ')
-  )();
+  )(...valueArgs);
 }

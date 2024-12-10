@@ -13,7 +13,7 @@ export default {
     return {
       filePaths: [`../../../spa/plugins/${answers.framework}/spa/${value}/${answers.spaMain ? 'main' : 'child'}`],
       params: {
-        childAppConfigs: answers.childApps.map((child, index) => `{
+        childAppConfigs: (answers.childApps || []).map((child, index) => `{
     name: '${child.childApp}',
     entry: 'http://localhost:${5173 + index + 1}',
     container: '#childApp',

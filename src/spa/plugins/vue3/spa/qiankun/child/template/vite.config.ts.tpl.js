@@ -1,3 +1,4 @@
+debugger
 module.exports = {
   import: `
 import qiankun from 'vite-plugin-qiankun';
@@ -7,5 +8,5 @@ import qiankun from 'vite-plugin-qiankun';
         useDevMode: true
       }),
 `,
-  injectServerPort: `port: <!---=serverPort--->,`,
+  injectServerPort: `port: ${serverPort},`,
 };

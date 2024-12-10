@@ -23,14 +23,11 @@ function composeApp(appName, framework, answers, options = {}) {
     const baseFiles = baseResult.files;
     const baseParams = baseResult.params || {};
     let params = {};
-
     debugger
 
     Promise.all(
       plugins.map((name) => {
         const handle = handlers[framework][name];
-
-        debugger
 
         return handle ? searchTemplates(
           framework,
@@ -42,12 +39,12 @@ function composeApp(appName, framework, answers, options = {}) {
         };
       })
     ).then((templateResults) => {
-      debugger
         // 解析所有参数
         params = templateResults.reduce(
           (params, templateResult) => ({ ...params, ...templateResult.params }),
-          { ...appParams, ...baseParams }
+          { ...answers, ...appParams, ...baseParams }
         );
+
         // 获取文件内容
         return Promise.all(
           [
@@ -57,7 +54,6 @@ function composeApp(appName, framework, answers, options = {}) {
         );
       })
       .then(([baseContentMap, ...dataContentMaps]) => {
-        debugger
         // 设置项目名称
         if (baseContentMap.get('./package.json')) {
           baseContentMap.get('./package.json')[0].content.name = appName;

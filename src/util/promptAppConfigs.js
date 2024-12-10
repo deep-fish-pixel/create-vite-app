@@ -15,7 +15,7 @@ export default function promptAppConfigs(appName, framework, isSPA, spaAnswers) 
   }
 
   return new Promise((resolve, reject) => {
-    inquirer.prompt(frameworkQuestions).then(() => {
+    inquirer.prompt(frameworkQuestions).then((answers) => {
       // 框架名称
       answers.framework = framework;
 
