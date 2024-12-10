@@ -17,11 +17,7 @@ export default function (answers) {
   ).then((baseResult) => {
     const baseFiles = baseResult.files;
     const params = { ...answers, Spa: answers.spa.replace(/^\d/, (char) => char.toUpperCase()) };
-    console.log(baseFiles);
-    debugger
-    // baseFiles.forEach((baseFile) => {
-    //   renderFile(baseFile, baseFile, params);
-    // });
+
     return getFileContentMap(baseFiles, params);
   }).then((baseContentMap) => {
     // 输出文件内容

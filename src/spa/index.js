@@ -6,6 +6,7 @@ import childAppNameQuestion from './questions/childAppName.js';
 import promptFramework from '../index.js';
 import composeApp from "../util/composeApp.js";
 import createEntryTemplate from "./util/entryTemplate/index.js";
+import installApp from "./util/installApp.js";
 
 export default function spaPromptFramework() {
   inquirer.prompt(spaQuestion.question).then((spaAnswers) => {
@@ -27,7 +28,7 @@ export default function spaPromptFramework() {
           }).then((answers) => {
             createEntryTemplate(answers);
 
-            childResults.forEach((childResult, index) => {
+            return Promise.all(childResults.map((childResult, index) => {
               const childAnswers = {
                 ...answers,
                 spa: spaAnswers.spa,
@@ -36,7 +37,9 @@ export default function spaPromptFramework() {
                 serverPort: 7143 + index + 1,
               };
 
-              composeApp(childResult.childApp, childAnswers.framework, childAnswers);
+              return composeApp(childResult.childApp, childAnswers.framework, childAnswers);
+            })).then(() => {
+              installApp(spaAnswers.spa, true);
             });
           });
         });
