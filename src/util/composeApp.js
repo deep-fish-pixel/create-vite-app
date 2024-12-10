@@ -16,21 +16,20 @@ function composeApp(appName, framework, answers, options = {}) {
   };
 
   searchTemplates(
-    framework,
+    `plugins/${framework}`,
     'base',
     handlers[framework].base(composer, answers['base'])
   ).then((baseResult) => {
     const baseFiles = baseResult.files;
     const baseParams = baseResult.params || {};
     let params = {};
-    debugger
 
     Promise.all(
       plugins.map((name) => {
         const handle = handlers[framework][name];
 
         return handle ? searchTemplates(
-          framework,
+          `plugins/${framework}`,
           name,
           handle(composer, answers[name], answers)
         ) : {

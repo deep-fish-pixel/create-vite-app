@@ -1,4 +1,3 @@
-debugger
 module.exports = {
   import: `
 import qiankun from 'vite-plugin-qiankun';

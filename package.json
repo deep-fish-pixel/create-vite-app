@@ -33,6 +33,7 @@
     "inquirer": "^8.2.5",
     "ora": "^5.4.1",
     "recursive-readdir": "^2.2.3",
+    "rollup": "^4.28.1",
     "sort-package-json": "^1.57.0"
   },
   "devDependencies": {

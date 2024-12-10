@@ -37,7 +37,7 @@ export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
   return baseFileMap;
 }
 
-function renderFile(baseFile, fileObj, params) {
+export function renderFile(baseFile, fileObj, params) {
   if (fileObj.isJson) {
     assignConcat(baseFile.content, fileObj.content);
   } else if (fileObj.isTemplate) {

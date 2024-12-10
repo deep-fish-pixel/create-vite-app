@@ -19,12 +19,12 @@ export default function promptAppConfigs(appName, framework, isSPA, spaAnswers) 
       // 框架名称
       answers.framework = framework;
 
+      // spa的回答
+      Object.assign(answers, spaAnswers);
+
       resolve({
         ...answers,
       });
-
-      // spa的回答
-      Object.assign(answers, spaAnswers);
 
       composeApp(appName, framework, answers);
     });

@@ -9,7 +9,6 @@ export default {
     ],
   },
   handler(composer, value, answers){
-    debugger
     return {
       filePaths: [`../../../spa/plugins/${answers.framework}/spa/${value}/${answers.spaMain ? 'main' : 'child'}`],
       params: {

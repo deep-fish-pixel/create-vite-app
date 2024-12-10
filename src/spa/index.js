@@ -5,6 +5,7 @@ import childAppsNumberQuestion from './questions/childAppsNumber.js';
 import childAppNameQuestion from './questions/childAppName.js';
 import promptFramework from '../index.js';
 import composeApp from "../util/composeApp.js";
+import createEntryTemplate from "./util/entryTemplate/index.js";
 
 export default function spaPromptFramework() {
   inquirer.prompt(spaQuestion.question).then((spaAnswers) => {
@@ -18,22 +19,24 @@ export default function spaPromptFramework() {
 
         loopQuestionsPromise(list, 0, []).then((childResults) => {
           console.log(spaAnswers, mainAppNameAnswers, childAppsNumberAnswers, childResults);
+
           promptFramework(mainAppNameAnswers.mainApp, true, {
             spa: spaAnswers.spa,
-            spaMain: true,
+            spaMain: mainAppNameAnswers.mainApp,
             childApps: childResults,
           }).then((answers) => {
+            createEntryTemplate(answers);
+
             childResults.forEach((childResult, index) => {
-              Object.assign(answers, {
+              const childAnswers = {
+                ...answers,
                 spa: spaAnswers.spa,
                 spaMain: false,
                 childApps: [],
                 serverPort: 7143 + index + 1,
-              });
+              };
 
-              debugger
-
-              composeApp(childResult.childApp, answers.framework, answers);
+              composeApp(childResult.childApp, childAnswers.framework, childAnswers);
             });
           });
         });

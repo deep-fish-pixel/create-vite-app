@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export default function searchTemplates(framework, name, result) {
+export default function searchTemplates(directory, name, result) {
   return new Promise((resolve) => {
     const { filePaths, params } = result;
 
@@ -15,10 +15,11 @@ export default function searchTemplates(framework, name, result) {
           const filepath = path.join(
             __dirname,
             __filename.match(/searchTemplates\.js/) ? '../../' : '',
-            `plugins/${framework}`,
+            directory,
             name,
             pathName
           );
+
           return recursive(
             filepath,
             ['.DS_Store', `${name}/handler.js`, `${name}/question.js`]
