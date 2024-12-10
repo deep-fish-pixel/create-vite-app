@@ -3,7 +3,7 @@ import path from 'path';
 import ora from 'ora';
 import composer from '../composer.js';
 
-export default function outputFileContents(appName, fileMap) {
+export default function outputFileContents(appName, fileMap, subDir) {
   const createFileSpinner = ora('creating files ...').start();
 
   try {
@@ -12,7 +12,7 @@ export default function outputFileContents(appName, fileMap) {
 
       if (file.isFile) {
         fse.outputFileSync(
-          path.join(process.cwd(), appName, file.filename),
+          path.join(process.cwd(), subDir, appName, file.filename),
           file.content,
         );
       } else {
@@ -24,7 +24,7 @@ export default function outputFileContents(appName, fileMap) {
 
 
         fse.outputFileSync(
-          path.join(process.cwd(), appName, file.filename),
+          path.join(process.cwd(), subDir, appName, file.filename),
           composer.runOutputFilters(output, file.filename)
         );
       }

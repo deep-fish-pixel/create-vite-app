@@ -29,6 +29,7 @@ export default defineConfig((env) => {
       //<---+injectViteVConsole--->
     ],
     server: {
+      //<---=injectServerPort--->
       proxy: {
         '^/api': {
           target: 'http://example.com',

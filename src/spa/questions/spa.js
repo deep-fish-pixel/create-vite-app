@@ -11,9 +11,14 @@ export default {
   handler(composer, value, answers){
     debugger
     return {
-      filePaths: [`../../../spa/plugins/${answers.framework}/spa/${value}`],
+      filePaths: [`../../../spa/plugins/${answers.framework}/spa/${value}/${answers.spaMain ? 'main' : 'child'}`],
       params: {
-        precssor: value,
+        childAppConfigs: answers.childApps.map((child, index) => `{
+    name: '${child.childApp}',
+    entry: 'http://localhost:${5173 + index + 1}',
+    container: '#childApp',
+    activeRule: '/${child.childApp}',
+  }`).join(', ') + ',',
       },
     };
   }

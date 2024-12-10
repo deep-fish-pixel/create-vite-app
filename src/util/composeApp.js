@@ -71,12 +71,14 @@ function composeApp(appName, framework, answers, options = {}) {
       })
       .then((baseContentMap) => {
         // 输出文件内容
-        return outputFileContents(appName, baseContentMap)
+        return outputFileContents(appName, baseContentMap, answers.spa ? answers.spa : '', )
       })
-      .then(() =>
+      .then(() =>{
         // 安装操作
-        installApp(appName, _options.install)
-      );
+        if (!answers.spa) {
+          installApp(appName, _options.install);
+        }
+      });
   });
 }
 

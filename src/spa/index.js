@@ -19,6 +19,8 @@ export default function spaPromptFramework() {
           console.log(spaAnswers, mainAppNameAnswers, childAppsNumberAnswers, childResults);
           promptFramework(mainAppNameAnswers.mainApp, true, {
             spa: spaAnswers.spa,
+            spaMain: true,
+            childApps: childResults,
           });
         });
       });

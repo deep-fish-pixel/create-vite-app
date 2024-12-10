@@ -7,4 +7,5 @@ import qiankun from 'vite-plugin-qiankun';
         useDevMode: true
       }),
 `,
+  injectServerPort: `port: <!---=serverPort--->,`,
 };
