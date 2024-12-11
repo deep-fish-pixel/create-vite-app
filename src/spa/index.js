@@ -26,7 +26,6 @@ export default function spaPromptFramework() {
             spaMain: mainAppNameAnswers.mainApp,
             childApps: childResults,
           }).then((answers) => {
-            debugger
             createEntryTemplate(answers);
             return Promise.all(childResults.map((childResult, index) => {
               const childAnswers = {

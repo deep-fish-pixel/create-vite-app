@@ -8,7 +8,7 @@ export default function (answers) {
   const installCmd = manages.yarn ? 'yarn' : 'npm i';
   const installChildCmds = answers.childApps.map(childApp => `"install:${childApp.childApp}": "cd ${childApp.childApp} && ${installCmd}"`);
   const startChildCmds = answers.childApps.map(childApp => `"start:${childApp.childApp}": "cd ${childApp.childApp} && npm start"`);
-  const buildChildCmds = answers.childApps.map(childApp => `"install:${childApp.childApp}": "cd ${childApp.childApp} && npm run build"`);
+  const buildChildCmds = answers.childApps.map(childApp => `"build:${childApp.childApp}": "cd ${childApp.childApp} && npm run build"`);
 
   fse.outputFile(path.join(process.cwd(), answers.spa, 'package.json'), `{
   "name": "${answers.spa}-spa-entry",

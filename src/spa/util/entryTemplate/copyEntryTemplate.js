@@ -21,7 +21,6 @@ export default function (answers) {
     return getFileContentMap(baseFiles, params);
   }).then((baseContentMap) => {
     // 输出文件内容
-    debugger
     return outputFileContents(answers.spa, baseContentMap, '')
   })
 }

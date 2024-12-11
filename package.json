@@ -38,7 +38,8 @@
   },
   "devDependencies": {
     "eslint-config-vite-app-vue": "^1.0.1",
-    "rollup-plugin-copy": "^3.4.0"
+    "rollup-plugin-copy": "^3.4.0",
+    "vue-tsc": "^2.1.10"
   },
   "keywords": [
     "vue3",
