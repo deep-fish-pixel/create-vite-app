@@ -33,7 +33,7 @@ export default function spaPromptFramework() {
                 spa: spaAnswers.spa,
                 spaMain: false,
                 childApps: [],
-                serverPort: 7143 + index + 1,
+                serverPort: 5173 + index + 1,
               };
 
               return composeApp(childResult.childApp, childAnswers.framework, childAnswers);

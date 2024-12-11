@@ -19,7 +19,7 @@ Startup
 npm start
 ```
 
-通过 [http://localhost:7143/](http://localhost:7143/) 访问主应用。
+通过 [http://localhost:5173/](http://localhost:5173/) 访问主应用。
 
 Build
 ```

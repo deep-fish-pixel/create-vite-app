@@ -26,7 +26,7 @@ export default defineConfig((env) => {
       vueJsx(),
       mockDevServerPlugin({
         prefix: '/',
-      }),
+      }),//<---=injectQiankun--->
       //<---+injectViteVConsole--->
     ],
     server: {

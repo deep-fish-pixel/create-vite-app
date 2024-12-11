@@ -12,12 +12,18 @@ export default {
     return {
       filePaths: [`../../../spa/plugins/${answers.framework}/spa/${value}/${answers.spaMain ? 'main' : 'child'}`],
       params: {
+        injectChildApp: answers.spaMain ? '<div id="childApp"></div>' : '',
         childAppConfigs: (answers.childApps || []).map((child, index) => `{
     name: '${child.childApp}',
     entry: 'http://localhost:${5173 + index + 1}',
     container: '#childApp',
     activeRule: '/${child.childApp}',
   }`).join(', ') + ',',
+        childRouterLinks: (answers.childApps || []).map((child, index) => `<router-link :to="{ path: '/${child.childApp}' }" class="router" :class="{
+      'router-link-active': route.path.match(/\\/${child.childApp}/)
+    }">
+      ${child.childApp.replace(/\w/, all => all.toUpperCase())}
+    </router-link>`).join('\n    '),
       },
     };
   }

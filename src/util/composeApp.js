@@ -17,6 +17,7 @@ function composeApp(appName, framework, answers, options = {}) {
 
   const appParams = {
     appName,
+    isSingle: !answers.spa,
     ...frameworkHandler(composer, framework).params,
   };
 

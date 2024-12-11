@@ -1,3 +1,3 @@
 module.exports = {
-  injectServerPort: `port: 7143,`,
+  injectServerPort: `port: 5173,`,
 };
