@@ -9,13 +9,18 @@ import handlers, { framework as frameworkHandler } from './qa/handlers.js';
 
 function composeApp(appName, framework, answers, options = {}) {
   const _options = { install: true, ...options };
-  const plugins = ['precss', 'i18n', 'terminal', 'pwa', 'render', 'spa', 'test'];
+  const plugins = ['precss', 'i18n', 'terminal', 'pwa', 'render', 'test'];
+
+  if (answers.spa) {
+    plugins.push('spa');
+  }
+
   const appParams = {
     appName,
     ...frameworkHandler(composer, framework).params,
   };
 
-  searchTemplates(
+  return searchTemplates(
     `plugins/${framework}`,
     'base',
     handlers[framework].base(composer, answers['base'])
@@ -24,7 +29,7 @@ function composeApp(appName, framework, answers, options = {}) {
     const baseParams = baseResult.params || {};
     let params = {};
 
-    Promise.all(
+    return Promise.all(
       plugins.map((name) => {
         const handle = handlers[framework][name];
 
@@ -71,7 +76,7 @@ function composeApp(appName, framework, answers, options = {}) {
       .then(() =>{
         // 安装操作
         if (!answers.spa) {
-          installApp(appName, _options.install);
+          return installApp(appName, _options.install);
         }
       });
   });

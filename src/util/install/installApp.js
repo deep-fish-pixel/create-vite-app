@@ -39,5 +39,12 @@ export default function installApp(appName, install) {
           )}`
         );
       }
-    });
+    }).catch((error) => {
+      pnpmSpinner.fail(`${packageManageName} install failed`);
+      console.log(
+        `You can start dev serve by commands：\n${chalk.green(
+          `cd ${appName} && ${packageManageName} install && npm run start`
+        )}`
+      );
+  });
 }

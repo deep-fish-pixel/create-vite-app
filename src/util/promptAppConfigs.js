@@ -22,11 +22,9 @@ export default function promptAppConfigs(appName, framework, isSPA, spaAnswers) 
       // spa的回答
       Object.assign(answers, spaAnswers);
 
-      resolve({
+      return composeApp(appName, framework, answers).then(() => ({
         ...answers,
-      });
-
-      composeApp(appName, framework, answers);
+      })).then(() => resolve(answers));
     });
   })
 

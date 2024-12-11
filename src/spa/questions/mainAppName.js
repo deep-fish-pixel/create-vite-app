@@ -3,7 +3,7 @@ export default {
     type: 'input',
     name: 'mainApp',
     message: 'Set your main app name',
-    default: 'mainApp'
+    default: 'main'
   },
   handler(composer, value){
     return {

@@ -26,8 +26,8 @@ export default function spaPromptFramework() {
             spaMain: mainAppNameAnswers.mainApp,
             childApps: childResults,
           }).then((answers) => {
+            debugger
             createEntryTemplate(answers);
-
             return Promise.all(childResults.map((childResult, index) => {
               const childAnswers = {
                 ...answers,
@@ -39,8 +39,10 @@ export default function spaPromptFramework() {
 
               return composeApp(childResult.childApp, childAnswers.framework, childAnswers);
             })).then(() => {
-              installApp(spaAnswers.spa, true);
+              installApp(spaAnswers.spa, mainAppNameAnswers.mainApp, childResults.map(child => child.childApp));
             });
+            // installApp(spaAnswers.spa, true);
+
           });
         });
       });
