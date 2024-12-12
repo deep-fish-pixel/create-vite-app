@@ -2,6 +2,7 @@ import { resolve } from 'path';
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue2';
 import vueJsx from '@vitejs/plugin-vue2-jsx';
+import svgLoader from 'vite-svg-loader';
 import mockDevServerPlugin from "vite-plugin-mock-dev-server";
 //<---+import--->
 
@@ -23,6 +24,7 @@ export default defineConfig((env) => {
         include: [/\.vue$/]
       }),
       vueJsx(),
+      svgLoader(),
       mockDevServerPlugin({
         prefix: '/',
       }),//<---=injectQiankun--->

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import vueSvg from '../assets/images/vue.svg';
+import IconVue from '@/components/svg/IconVue.vue';
 
 defineProps<{ msg: string }>();
 </script>
@@ -7,7 +7,7 @@ defineProps<{ msg: string }>();
 <template>
   <div>
     <a href="https://vuejs.org/" target="_blank">
-      <img :src="vueSvg" class="logo vue" alt="Vue logo" />
+      <IconVue class="logo vue" alt="Vue logo" />
     </a>
     <h3>{{ msg }}</h3>
   </div>

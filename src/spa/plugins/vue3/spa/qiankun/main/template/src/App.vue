@@ -20,21 +20,6 @@ const route = useRoute();
     color: #42b883;
   }
 }
-
-#childApp #app{
-  border: 1px dashed #ccc;
-  position: relative;
-  &::before {
-     content: "First Child App";
-     position: absolute;
-     top: -12px;
-     left: 18px;
-     z-index: 4;
-     padding: 0 4px;
-     color: #999;
-     background: #fff;
-   }
-}
 </style>
 
 <style lang="<!---=precssor--->" scoped>

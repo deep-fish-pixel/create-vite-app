@@ -6,31 +6,48 @@ export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
   dataFileMaps.forEach((dataFileMap) => {
     dataFileMap.forEach((fileObjs, dataFileMapKey) => {
       fileObjs.forEach((fileObj) => {
-        const baseFiles = baseFileMap.get(fileObj.filename);
+        if(fileObj.filename.match(/main\.ts$|package\.json$/)){
+          debugger
+        }
 
-        if (!baseFiles && !fileObj.isTemplate) {
-          const baseFile = { content: fileObj.isJson ? {} : '' };
+        const baseFileOld = baseFileMap.get(fileObj.filename);
 
-          renderFile(baseFile, fileObj, params);
-          baseFileMap.set(fileObj.filename, [
-            { ...fileObj, content: baseFile.content },
-          ]);
-          dataFileMap.delete(dataFileMapKey);
+        if (/*!baseFileOld && */!fileObj.isTemplate) {
+          const baseFile = baseFileOld ?  { content: fileObj.isJson ? baseFileOld[0].content || {} : '' } : { content: fileObj.isJson ? {} : '' };
+
+          if (fileObj.isJson && !fileObj.isTemplate) {
+            renderFile(baseFile, fileObj, params);
+            baseFileMap.set(fileObj.filename, [
+              { ...fileObj, content: baseFile.content },
+            ]);
+            dataFileMap.delete(dataFileMapKey);
+          } else if (!fileObj.isTemplate) {
+            baseFileMap.set(fileObj.filename, [
+              { ...fileObj },
+            ]);
+            dataFileMap.delete(dataFileMapKey);
+          }
         }
       });
     });
   });
 
+  debugger
   // 替换全局参数
   dataFileMaps.forEach((dataFileMap) => {
     dataFileMap.forEach((fileObjs) => {
       fileObjs.forEach((fileObj) => {
-        const baseFiles = baseFileMap.get(fileObj.filename);
+        const baseFileOld = baseFileMap.get(fileObj.filename);
 
-        baseFiles &&
-          baseFiles.forEach((baseFile) => {
+        if(fileObj.filename.match(/main\.ts$|package\.json$/)){
+          debugger
+        }
+
+        if (baseFileOld) {
+          baseFileOld.forEach((baseFile) => {
             renderFile(baseFile, fileObj, params);
           });
+        }
       });
     });
   });
