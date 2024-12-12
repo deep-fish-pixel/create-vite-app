@@ -8,7 +8,7 @@ import composeApp from "../util/composeApp.js";
 import createEntryTemplate from "./util/entryTemplate/index.js";
 import installApp from "./util/installApp.js";
 
-export default function spaPromptFramework() {
+export default function spaPromptFramework(spaName) {
   inquirer.prompt(spaQuestion.question).then((spaAnswers) => {
     inquirer.prompt(mainAppNameQuestion.question).then((mainAppNameAnswers) => {
       inquirer.prompt(childAppsNumberQuestion.question).then((childAppsNumberAnswers) => {
@@ -21,15 +21,17 @@ export default function spaPromptFramework() {
         loopQuestionsPromise(list, 0, []).then((childResults) => {
           console.log(spaAnswers, mainAppNameAnswers, childAppsNumberAnswers, childResults);
 
-          promptFramework(mainAppNameAnswers.mainApp, true, {
+          promptFramework(mainAppNameAnswers.mainApp, {
+            spaName,
             spa: spaAnswers.spa,
             spaMain: mainAppNameAnswers.mainApp,
             childApps: childResults,
           }).then((answers) => {
-            createEntryTemplate(answers);
+            createEntryTemplate(spaName, answers);
             return Promise.all(childResults.map((childResult, index) => {
               const childAnswers = {
                 ...answers,
+                spaName,
                 spa: spaAnswers.spa,
                 spaMain: false,
                 childApps: [],
@@ -38,7 +40,7 @@ export default function spaPromptFramework() {
 
               return composeApp(childResult.childApp, childAnswers.framework, childAnswers);
             })).then(() => {
-              installApp(spaAnswers.spa, mainAppNameAnswers.mainApp, childResults.map(child => child.childApp));
+              installApp(spaName, mainAppNameAnswers.mainApp, childResults.map(child => child.childApp));
             });
             // installApp(spaAnswers.spa, true);
 

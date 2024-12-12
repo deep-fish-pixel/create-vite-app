@@ -72,7 +72,7 @@ function composeApp(appName, framework, answers, options = {}) {
       })
       .then((baseContentMap) => {
         // 输出文件内容
-        return outputFileContents(appName, baseContentMap, answers.spa ? answers.spa : '', )
+        return outputFileContents(appName, baseContentMap, answers.spa ? answers.spaName || answers.spa: '', )
       })
       .then(() =>{
         // 安装操作

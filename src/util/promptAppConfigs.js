@@ -2,7 +2,7 @@ import inquirer from 'inquirer';
 import composeApp from './composeApp.js';
 import questions from './qa/questions.js';
 
-export default function promptAppConfigs(appName, framework, isSPA, spaAnswers) {
+export default function promptAppConfigs(appName, framework, spaAnswers) {
   if (!questions[framework]) {
     console.error(`暂不支持${framework}`);
     return;

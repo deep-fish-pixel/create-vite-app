@@ -16,6 +16,8 @@ export default function installApp(entryAppName, mainApp, childApps, install) {
     path: index > 0 ? `${entryAppName}/${name}` : entryAppName,
   }));
 
+  debugger
+
   const gitInitCommands = apps.map(app => execa.command('git init', { cwd: path.join(process.cwd(), app.path) }));
 
   return Promise.all(gitInitCommands)

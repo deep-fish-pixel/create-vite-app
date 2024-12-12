@@ -6,10 +6,6 @@ export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
   dataFileMaps.forEach((dataFileMap) => {
     dataFileMap.forEach((fileObjs, dataFileMapKey) => {
       fileObjs.forEach((fileObj) => {
-        if(fileObj.filename.match(/main\.ts$|package\.json$/)){
-          debugger
-        }
-
         const baseFileOld = baseFileMap.get(fileObj.filename);
 
         if (/*!baseFileOld && */!fileObj.isTemplate) {
@@ -32,16 +28,11 @@ export default function mergeFileContents(baseFileMap, dataFileMaps, params) {
     });
   });
 
-  debugger
   // 替换全局参数
   dataFileMaps.forEach((dataFileMap) => {
     dataFileMap.forEach((fileObjs) => {
       fileObjs.forEach((fileObj) => {
         const baseFileOld = baseFileMap.get(fileObj.filename);
-
-        if(fileObj.filename.match(/main\.ts$|package\.json$/)){
-          debugger
-        }
 
         if (baseFileOld) {
           baseFileOld.forEach((baseFile) => {

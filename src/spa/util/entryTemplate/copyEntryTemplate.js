@@ -7,7 +7,7 @@ import outputFileContents from "../../../util/file/outputFileContents.js";
 import mergeFileContents, {renderFile} from "../../../util/file/mergeFileContents.js";
 import getFileContentMap from "../../../util/file/getFileContentMap.js";
 
-export default function (answers) {
+export default function (spaName, answers) {
   searchTemplates(
     'spa',
     'entry',
@@ -21,6 +21,6 @@ export default function (answers) {
     return getFileContentMap(baseFiles, params);
   }).then((baseContentMap) => {
     // 输出文件内容
-    return outputFileContents(answers.spa, baseContentMap, '')
+    return outputFileContents(spaName, baseContentMap, '')
   })
 }

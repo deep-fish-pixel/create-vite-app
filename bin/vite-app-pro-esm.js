@@ -72,9 +72,11 @@ program
 
 program
   .command('create-spa')
-  .description('Create Spa apps')
+  .description('Create a spa, contains spa entry、main app and child apps')
+  .argument('<spa-name>', 'spa name')
   .action((str, options) => {
-    spaPromptFramework();
+    console.log('str======', str);
+    spaPromptFramework(str);
   });
 
 program.parse();

@@ -3,15 +3,15 @@ import fse from 'fs-extra';
 import {checkPackageManages} from "../../../util/install/packageManage.js";
 
 
-export default function (answers) {
+export default function (spaName, answers) {
   const manages = checkPackageManages();
   const installCmd = manages.yarn ? 'yarn' : 'npm i';
   const installChildCmds = answers.childApps.map(childApp => `"install:${childApp.childApp}": "cd ${childApp.childApp} && ${installCmd}"`);
   const startChildCmds = answers.childApps.map(childApp => `"start:${childApp.childApp}": "cd ${childApp.childApp} && npm start"`);
   const buildChildCmds = answers.childApps.map(childApp => `"build:${childApp.childApp}": "cd ${childApp.childApp} && npm run build"`);
 
-  fse.outputFile(path.join(process.cwd(), answers.spa, 'package.json'), `{
-  "name": "${answers.spa}-spa-entry",
+  fse.outputFile(path.join(process.cwd(), spaName, 'package.json'), `{
+  "name": "${spaName}",
   "version": "1.0.0",
   "description": "${answers.spa} spa",
   "devDependencies": {
