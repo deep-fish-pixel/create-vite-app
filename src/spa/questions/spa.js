@@ -24,6 +24,11 @@ export default {
     }">
       ${child.childApp.replace(/\w/, all => all.toUpperCase())}
     </router-link>`).join('\n    '),
+        childRouters: (answers.childApps || []).map((child, index) => `{
+    path: '/${child.childApp}/:id?',
+    name: '${child.childApp}',
+    component: () => import('@/views/apps/${child.childApp}.vue'),
+  },`).join('\n    '),
       },
     };
   }
