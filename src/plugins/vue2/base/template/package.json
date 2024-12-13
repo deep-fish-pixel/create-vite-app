@@ -8,7 +8,7 @@
     "build": "vue-tsc && vite build",
     "lint:eslint": "eslint --cache --max-warnings 0 \"src/**/*.{vue,js,ts,tsx}\" --fix",
     "lint:prettier": "eslint . --fix",
-    "lint": "pnpm lint:eslint && pnpm lint:prettier",
+    "lint": "npm run lint:eslint && npm run lint:prettier",
     "prepare": "husky install"
   },
   "dependencies": {

@@ -5,7 +5,7 @@ import {checkPackageManages} from "../../../util/install/packageManage.js";
 
 export default function (spaName, answers) {
   answers.childApps.forEach((childApp, index) => {
-    fse.outputFile(path.join(process.cwd(), spaName, `${answers.spaMain}/src/views/apps/${childApp.childApp}.json`), `<template>
+    fse.outputFile(path.join(process.cwd(), spaName, `${answers.spaMain}/src/views/apps/${childApp.childApp}.vue`), `<template>
   <div class="micro-app">
     <micro-app
       name='${childApp.childApp}'
