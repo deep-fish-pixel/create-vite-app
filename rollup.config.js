@@ -17,7 +17,8 @@ export default [
               contents
                 .toString()
                 .replace(/\/src\//g, '/lib/')
-                .replace(/\/util\//g, '/'),
+                .replace(/\/util\//g, '/')
+                .replace(/\/spa\//g, '/'),
           },
           { src: 'README.md', dest: 'dist/' },
           {
@@ -32,6 +33,14 @@ export default [
             src: 'src/plugins',
             dest: 'dist/lib/',
           },
+          {
+            src: 'src/spa/entry',
+            dest: 'dist/lib/spa',
+          },
+          {
+            src: 'src/spa/plugins',
+            dest: 'dist/lib/spa',
+          },
         ],
         filter: (src) => !src.match(/\/(handler|question)\.js$/),
       }),
@@ -41,6 +50,13 @@ export default [
     input: 'src/util/composeApp.js',
     output: {
       file: 'dist/lib/composeApp.js',
+      format: 'cjs',
+    },
+  },
+  {
+    input: 'src/spa/spaPromptFramework.js',
+    output: {
+      file: 'dist/lib/spaPromptFramework.js',
       format: 'cjs',
     },
   },

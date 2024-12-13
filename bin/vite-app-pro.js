@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const packageJson = require('../package.json');
 const composeApp = require('../src/util/composeApp');
 const promptFramework = require('../src/index');
+const spaPromptFramework = require('../src/spa/spaPromptFramework');
 
 const program = new Command();
 
@@ -60,6 +61,14 @@ program
       );
     }
     promptFramework(str);
+  });
+
+program
+  .command('create-spa')
+  .description('Create a spa, contains spa entry、main app and child apps')
+  .argument('<spa-name>', 'spa name')
+  .action((str, options) => {
+    spaPromptFramework(str);
   });
 
 program.parse();

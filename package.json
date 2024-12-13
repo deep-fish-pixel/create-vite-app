@@ -1,7 +1,7 @@
 {
   "name": "vite-app-pro",
-  "version": "1.3.5",
-  "description": "create vite vue3/vue2 typeScript jsx pinia ssr ssg pwa project in few seconds",
+  "version": "1.4.0",
+  "description": "create vite vue3/vue2 typeScript jsx pinia ssr ssg pwa spa project in few seconds",
   "type": "module",
   "main": "lib/index.js",
   "bin": {
@@ -44,6 +44,8 @@
   "keywords": [
     "vue3",
     "vue2",
+    "spa",
+    "qiankun",
     "create vue app",
     "vite create app",
     "vue router",

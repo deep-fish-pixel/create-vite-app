@@ -5,7 +5,7 @@ import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import chalk from 'chalk';
 import promptFramework from '../src/index.js';
-import spaPromptFramework from '../src/spa/index.js';
+import spaPromptFramework from '../src/spa/spaPromptFramework.js';
 import composeApp from '../src/util/composeApp.js';
 
 const __filename = fileURLToPath(import.meta.url);
