@@ -10,10 +10,6 @@ export default function outputFileContents(appName, fileMap, subDir) {
     fileMap.forEach((files) => {
       const file = files[0];
 
-      if(file.filename.indexOf('vite.config.ts') >= 0){
-        debugger
-      }
-
       if (file.isFile) {
         fse.outputFileSync(
           path.join(process.cwd(), subDir, appName, file.filename),

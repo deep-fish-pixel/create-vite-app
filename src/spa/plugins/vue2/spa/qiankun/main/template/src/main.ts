@@ -24,18 +24,7 @@ new Vue({
 
 // 注册子应用
 registerMicroApps([
-  {
-    name: 'firstApp',
-    entry: 'http://localhost:5174',
-    container: '#childApp',
-    activeRule: '/first',
-  },
-  /*{
-    name: 'second',
-    entry: 'http://localhost:5174',
-    container: '#childApp',
-    activeRule: '/second',
-  },*/
+  //<---=childAppConfigs--->
 ]);
 
 // 启用微前端

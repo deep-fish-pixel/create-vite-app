@@ -6,7 +6,6 @@ import pinia from '@/store';
 import App from './App.vue';
 //<---+importCss--->
 
-let router = null;
 let app: any = null;
 
 function appMount(props: any) {
@@ -15,17 +14,17 @@ function appMount(props: any) {
   // 配置路由
   setupRouter();
 
-// 配置指令
+  // 配置指令
   setupDirectives();
 
-//<---+setup--->
+  //<---+setup--->
 
-  new Vue({
+  app = new Vue({
     router,
     pinia,
     //<---+inject--->
     render: (h) => h(App),
-  }).$mount(container ? container.querySelector('#app') : '#app');
+  }).$mount(container || '#app');
 }
 
 function appUnmount() {

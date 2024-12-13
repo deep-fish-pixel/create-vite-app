@@ -19,12 +19,11 @@ export default function spaPromptFramework(spaName) {
         }
 
         loopQuestionsPromise(list, 0, []).then((childResults) => {
-          console.log(spaAnswers, mainAppNameAnswers, childAppsNumberAnswers, childResults);
-
           promptFramework(mainAppNameAnswers.mainApp, {
             spaName,
             spa: spaAnswers.spa,
             spaMain: mainAppNameAnswers.mainApp,
+            isMicroMainApp: spaAnswers.spa === 'micro-app',
             childApps: childResults,
           }).then((answers) => {
             createEntryTemplate(spaName, answers);

@@ -23,6 +23,13 @@ export default defineConfig((env) => {
       vue({
         include: [/\.vue$/],
         reactivityTransform: true,
+//<---#if(isMicroMainApp)--->
+        template: {
+          compilerOptions: {
+            isCustomElement: tag => /^micro-app/.test(tag)
+          }
+        },
+//<---#if--->
       }),
       vueJsx(),
       svgLoader(),

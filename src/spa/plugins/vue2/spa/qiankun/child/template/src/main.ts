@@ -7,7 +7,6 @@ import pinia from '@/store';
 import App from './App.vue';
 //<---+importCss--->
 
-let router = null;
 let app: any = null;
 
 function appMount(props: any) {

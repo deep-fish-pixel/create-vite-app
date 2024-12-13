@@ -4,6 +4,7 @@ import terminal from '../../../plugins/vue2/terminal/handler.js';
 import pwa from '../../../plugins/vue2/pwa/handler.js';
 import i18n from '../../../plugins/vue2/i18n/handler.js';
 import test from '../../../plugins/vue2/test/handler.js';
+import spa from "../../../spa/questions/spa.js";
 
 export default {
   base,
@@ -12,4 +13,5 @@ export default {
   pwa,
   i18n,
   test,
+  spa: spa.handler,
 };

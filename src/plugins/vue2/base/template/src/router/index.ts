@@ -7,6 +7,7 @@ import setupRouterGuard from '@/router/guard';
 
 const router: VueRouter = createRouter({
   mode: 'history',
+  base: import.meta.env.VITE_BASE,
   routes: [...routes],
 });
 

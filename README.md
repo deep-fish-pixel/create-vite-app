@@ -1,7 +1,7 @@
 # create vue3/vue2 app template cli
 Create vue template project cli，support to create typescript、ssg、ssr、pwa、pinia、i18n、eslint、test and son on.
 
-The cli can create spa projects, support [qiankun](https://qiankun.umijs.org/zh/guide/) or [micro-app](https://micro-zoe.github.io/micro-app/)
+The cli can create spa projects, support [qiankun](https://qiankun.umijs.org/zh/guide/)
 
 ### Install
 ```

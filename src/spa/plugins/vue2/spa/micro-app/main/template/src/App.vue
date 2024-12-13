@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router/composables';
 
 const route = useRoute();
 </script>
 
 <template>
   <div class="routers">
-    //<---=childRouterLinks--->
+    <div class="routers">
+      //<---=childRouterLinks--->
+    </div>
+    <keep-alive-vue2 :cache="route.meta?.cache" />
   </div>
-  <keep-alive-vue3 :cache="route.meta?.cache" />
 </template>
 
 <style lang="<!---=precssor--->">

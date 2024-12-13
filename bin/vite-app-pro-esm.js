@@ -75,7 +75,6 @@ program
   .description('Create a spa, contains spa entry、main app and child apps')
   .argument('<spa-name>', 'spa name')
   .action((str, options) => {
-    console.log('str======', str);
     spaPromptFramework(str);
   });
 

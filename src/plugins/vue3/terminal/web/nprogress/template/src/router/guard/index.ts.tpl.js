@@ -1,8 +1,8 @@
 module.exports = {
-  import: `
+  import: spaMain ? '' : `
 import createProgressGuard from '@/router/guard/progressGuard';
 `,
-  setup: `
+  setup: spaMain ? '' : `
   createProgressGuard(router);
 `,
 };

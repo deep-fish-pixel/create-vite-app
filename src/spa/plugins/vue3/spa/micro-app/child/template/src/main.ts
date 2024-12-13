@@ -25,7 +25,7 @@ function appMount(props: any) {
 
   //<---+setup--->
 
-  app.mount(container ? container.querySelector('#app') : '#app');
+  app.mount(container ? container.querySelector('#childApp') : '#app');
 }
 
 function appUnmount() {

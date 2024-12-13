@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router/composables';
 
 const route = useRoute();
 </script>
@@ -7,14 +7,10 @@ const route = useRoute();
 <template>
   <div class="routers">
     <div class="routers">
-      <router-link :to="{ path: '/first' }" class="router" :class="{
-      'router-link-active': route.path.match(/\/first/)
-    }">
-        First Child App
-      </router-link>
+      //<---=childRouterLinks--->
     </div>
+    <keep-alive-vue2 :cache="route.meta?.cache" />
   </div>
-  <keep-alive-vue3 :cache="route.meta?.cache" />
 </template>
 
 <style lang="<!---=precssor--->">
