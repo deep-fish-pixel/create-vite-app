@@ -6,13 +6,7 @@ const route = useRoute();
 
 <template>
   <div class="routers">
-    <div class="routers">
-      <router-link :to="{ path: '/first' }" class="router" :class="{
-      'router-link-active': route.path.match(/\/first/)
-    }">
-        First Child App
-      </router-link>
-    </div>
+    //<---=childRouterLinks--->
   </div>
   <keep-alive-vue3 :cache="route.meta?.cache" />
 </template>

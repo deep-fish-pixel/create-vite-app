@@ -7,16 +7,11 @@ import { getPackageManageName } from '../../util/install/packageManage.js';
 export default function installApp(entryAppName, mainApp, childApps, install) {
   const gitSpinner = ora('git init').start();
   const packageManageName = getPackageManageName();
-  const pnpmSpinner = ora(`${packageManageName.replace(/^\w/, char => char.toUpperCase())} is installing all ${entryAppName} apps `);
-
-  pnpmSpinner.start();
 
   const apps = [entryAppName, mainApp, ...childApps].map((name, index) => ({
     name,
     path: index > 0 ? `${entryAppName}/${name}` : entryAppName,
   }));
-
-  debugger
 
   const gitInitCommands = apps.map(app => execa.command('git init', { cwd: path.join(process.cwd(), app.path) }));
 
