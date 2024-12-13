@@ -1,5 +1,7 @@
 # create vue3/vue2 app template cli
-创建vue模板项目，适用于h5和pc，项目支持typescript、ssg、ssr、pwa、pinia、i18n、eslint、test等
+Create vue template project cli，support to create typescript、ssg、ssr、pwa、pinia、i18n、eslint、test and son on.
+
+The cli can create spa projects, support [qiankun](https://qiankun.umijs.org/zh/guide/) or [micro-app](https://micro-zoe.github.io/micro-app/)
 
 ### Install
 ```
@@ -7,12 +9,16 @@ npm install vite-app-pro -g
 ```
 
 ### Usage
+
+create single project
 ```
-vite-app-pro create helloWorld 
+vite-app-pro create helloWorld
 ```
 
+
+create spa projects
 ```
-cd helloWorld && npm run start
+vite-app-pro create-spa helloWorld
 ```
 
 ### Modules
@@ -42,12 +48,12 @@ cd helloWorld && npm run start
 
 ### 模板项目截图
 
-#### web项目
+#### web
 ![web-pinia](./assets/web-pinia.png)
 ![web-request](./assets/web-request.png)
 ![web-i18n](./assets/web-i18n.png)
 
-#### h5项目
+#### h5
 ![h5-pinia](./assets/h5-pinia.png)
 
 ![h5-request](./assets/h5-request.png)
