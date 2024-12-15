@@ -17,6 +17,7 @@ function composeApp(appName, framework, answers, options = {}) {
 
   const appParams = {
     appName,
+    spaMain: false,
     isSingle: !answers.spa,
     ...frameworkHandler(composer, framework).params,
   };
@@ -47,7 +48,7 @@ function composeApp(appName, framework, answers, options = {}) {
         // 解析所有参数
         params = templateResults.reduce(
           (params, templateResult) => ({ ...params, ...templateResult.params }),
-          { ...answers, ...appParams, ...baseParams }
+          { ...appParams, ...answers, ...baseParams }
         );
 
         // 获取文件内容
