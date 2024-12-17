@@ -19,7 +19,7 @@ export default function outputFileContents(appName, fileMap, subDir) {
         let output = '';
         if (file.isJson) {
           output = JSON.stringify(file.content, null, 2);
-        } else if (file.filename.match(/\.vue$/) ) {
+        } else if (file.filename.match(/\.vue|tsx$/) ) {
           output = file.content.replace(RegExp('(//<|<!)---=\\w+\\|\\|([^>]*)--->', 'g'), '$2')
             .replace(RegExp('(\\n+)( *)(//<|<!)(---\\+\\w+--->)', 'g'), '');
         } else {
