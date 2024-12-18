@@ -1,6 +1,6 @@
 {
   "name": "vite-app-pro",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "create vite vue3/vue2 typeScript jsx pinia ssr ssg pwa spa project in few seconds",
   "type": "module",
   "main": "lib/index.js",

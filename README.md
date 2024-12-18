@@ -50,13 +50,15 @@ vite-app-pro create-spa helloWorld
 
 #### web
 ![web-pinia](./assets/web-pinia.png)
-![web-request](./assets/web-request.png)
 ![web-i18n](./assets/web-i18n.png)
 
 #### h5
 ![h5-pinia](./assets/h5-pinia.png)
 
-![h5-request](./assets/h5-request.png)
-
 ![h5-i18n](./assets/h5-i18n.png)
+
+
+#### qiankun spa
+![qiankun](./assets/qiankun-vue3.png)
+![qiankun-i18n](./assets/qiankun-vue3-i18n.png)
 
