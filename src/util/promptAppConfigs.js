@@ -10,7 +10,8 @@ export default function promptAppConfigs(appName, framework, spaAnswers) {
 
   const frameworkQuestions = [...questions[framework]];
 
-  if(framework === 'vue3'){
+  // spa不支持ssr等
+  if(framework === 'vue3' && spaAnswers.spa){
     frameworkQuestions.splice(3, 1);
   }
 
