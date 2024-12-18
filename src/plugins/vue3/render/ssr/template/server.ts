@@ -8,7 +8,7 @@ import { ViteDevServer } from 'vite';
 // @ts-ignore
 import adapter from 'axios/lib/adapters/http.js';
 import serveStatic from 'serve-static';
-import compression from 'compression';
+// import compression from 'compression';
 
 axios.defaults.adapter = adapter;
 const isProduction = process.env.NODE_ENV === 'production';
@@ -50,7 +50,7 @@ export async function createServer(
     // @ts-ignore
     app.use(vite.middlewares);
   } else {
-    app.use(compression());
+    // app.use(compression());
     app.use(
       serveStatic(resolve('dist/client'), {
         index: false,
